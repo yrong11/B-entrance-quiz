@@ -2,20 +2,18 @@ package com.thoughtworks.capability.gtb.entrancequiz.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
 public class PeopleList {
     public List<People> peopleList = new ArrayList<>();
+    public int groupNum = 6;
+    public static String TEAM_PREFIX = "Team ";
 
     int len = 0;
-    Map<String, List<People>> groupPeople = new HashMap<>();
+    Map<String, List<People>> groupPeople = new LinkedHashMap<>();
 
     public PeopleList() {
         intiData();
@@ -38,6 +36,29 @@ public class PeopleList {
         if (!peopleList.contains(people)){
             peopleList.add(people);
         }
+    }
+
+
+    public Map<String, List<People>> randomGroup() {
+        List<People> list = this.peopleList;
+        Collections.shuffle(list);
+        int groupMembers = this.len / this.groupNum;
+        int remainderNum = this.len % this.groupNum;
+        for (int i = 1; i <= groupNum; i++){
+            List<People> group = new ArrayList<>();
+            for (int j = 0; j < groupMembers; j++){
+                group.add(list.get(i * groupMembers + j));
+            }
+            this.groupPeople.put(TEAM_PREFIX + i, group);
+        }
+
+        Iterator<String> iterator = this.groupPeople.keySet().iterator();
+        while (iterator.hasNext() && remainderNum-- != 0){
+            int index = len - remainderNum - 1;
+            String key = iterator.next();
+            this.groupPeople.get(key).add(list.get(index));
+        }
+        return this.groupPeople;
     }
 
 

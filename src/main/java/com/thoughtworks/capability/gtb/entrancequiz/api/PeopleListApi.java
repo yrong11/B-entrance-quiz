@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class PeopleListApi {
@@ -24,6 +25,13 @@ public class PeopleListApi {
     public ResponseEntity addPeople(@RequestBody String name) {
         peopleListService.addPeople(name);
         return ResponseEntity.ok().build();
+    }
+
+    @CrossOrigin
+    @GetMapping("/group")
+    public ResponseEntity getPeopleGroups() {
+        Map<String, List<People>> groupsPeople = peopleListService.getPeopleGroups();
+        return ResponseEntity.ok(groupsPeople);
     }
 
 }
