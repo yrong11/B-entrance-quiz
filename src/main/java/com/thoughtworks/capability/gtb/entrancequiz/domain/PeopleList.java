@@ -40,6 +40,7 @@ public class PeopleList {
 
 
     public Map<String, List<People>> randomGroup() {
+        this.groupPeople.clear();
         List<People> list = this.peopleList;
         Collections.shuffle(list);
         int groupMembers = this.len / this.groupNum;
