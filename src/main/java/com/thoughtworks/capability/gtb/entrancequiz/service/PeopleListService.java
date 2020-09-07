@@ -22,4 +22,16 @@ public class PeopleListService {
     public Map<String, List<People>> getPeopleGroups() {
         return peopleList.randomGroup();
     }
+
+    public void modifyGroupName(String groupName) {
+        String[] names = groupName.split(",");
+        String newName = names[0];
+        String oldName = names[1];
+        if (peopleList.getGroupPeople().containsKey(newName))
+            return;
+        List<People> peoples = peopleList.getGroupPeople().get(oldName);
+        peopleList.getGroupPeople().remove(oldName);
+        peopleList.getGroupPeople().put(newName, peoples);
+
+    }
 }

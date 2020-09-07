@@ -62,5 +62,11 @@ public class PeopleList {
     }
 
 
+    public Map<String, List<People>> getGroupPeople() {
+        return groupPeople;
+    }
 
+    public void setGroupPeople(Map<String, List<People>> groupPeople) {
+        this.groupPeople = groupPeople;
+    }
 }

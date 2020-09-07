@@ -34,4 +34,11 @@ public class PeopleListApi {
         return ResponseEntity.ok(groupsPeople);
     }
 
+    @CrossOrigin
+    @PostMapping("/group/modify")
+    public ResponseEntity modifyGroupName(@RequestBody String groupName) {
+        peopleListService.modifyGroupName(groupName);
+        return ResponseEntity.ok().build();
+    }
+
 }
