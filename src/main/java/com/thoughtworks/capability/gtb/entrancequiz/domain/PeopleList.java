@@ -48,7 +48,7 @@ public class PeopleList {
         for (int i = 1; i <= groupNum; i++){
             List<People> group = new ArrayList<>();
             for (int j = 0; j < groupMembers; j++){
-                group.add(list.get(i * groupMembers + j));
+                group.add(list.get((i-1) * groupMembers + j));
             }
             this.groupPeople.put(TEAM_PREFIX + i, group);
         }
