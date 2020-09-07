@@ -33,6 +33,13 @@ public class PeopleList {
         }
     }
 
+    public void addPeople(String name) {
+        People people = new People(++len, name);
+        if (!peopleList.contains(people)){
+            peopleList.add(people);
+        }
+    }
+
 
 
 }

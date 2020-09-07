@@ -13,4 +13,8 @@ public class PeopleListService {
     public List<People> getPeopleList() {
         return this.peopleList.peopleList;
     }
+
+    public void addPeople(String name) {
+        peopleList.addPeople(name);
+    }
 }

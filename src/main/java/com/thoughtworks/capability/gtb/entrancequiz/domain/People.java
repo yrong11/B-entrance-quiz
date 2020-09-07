@@ -1,5 +1,7 @@
 package com.thoughtworks.capability.gtb.entrancequiz.domain;
 
+import java.util.Objects;
+
 public class People {
     private int id;
     private String name;
@@ -7,6 +9,19 @@ public class People {
     public People(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof People)) return false;
+        People people = (People) o;
+        return id == people.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
