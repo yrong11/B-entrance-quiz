@@ -2,7 +2,7 @@ package com.thoughtworks.capability.gtb.entrancequiz.domain;
 
 import java.util.Objects;
 
-public class People {
+public class People implements Comparable<People> {
     private int id;
     private String name;
 
@@ -43,5 +43,12 @@ public class People {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(People o) {
+        if (this.id > o.id)
+            return 1;
+        return -1;
     }
 }

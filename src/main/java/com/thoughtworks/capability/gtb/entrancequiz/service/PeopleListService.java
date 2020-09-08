@@ -4,6 +4,7 @@ import com.thoughtworks.capability.gtb.entrancequiz.domain.People;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.PeopleList;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class PeopleListService {
     private static PeopleList peopleList = new PeopleList();
 
     public List<People> getPeopleList() {
+        Collections.sort(peopleList.peopleList);
         return this.peopleList.peopleList;
     }
 
